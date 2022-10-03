@@ -5,9 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 import java.util.Date;
 
 @Entity
+@Table
 public class Joining_details {
 
 	@Id
@@ -102,4 +105,12 @@ public class Joining_details {
 		this.base_location = base_location;
 	}
 
+	@Override
+	public String toString() {
+		return "Joining_details [joining_details_code=" + joining_details_code + ", joining_fy_as_fte="
+				+ joining_fy_as_fte + ", fte_joining_date=" + fte_joining_date + ", pls_joining_date="
+				+ pls_joining_date + ", joining_psl=" + joining_psl + ", wfo_date=" + wfo_date + ", base_location="
+				+ base_location + "]";
+	}
+	
 }
