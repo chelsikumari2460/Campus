@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,26 +24,46 @@ public class Joining_details {
 
 	@Column(length = 100)
 	private String joining_fy_as_fte;
-
-	private Date fte_joining_date;
-
-	private Date pls_joining_date;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate fte_joining_date;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate pls_joining_date;
 
 	@Column(length = 100)
 	private String joining_psl;
-
-	private Date wfo_date;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate wfo_date;
 
 	@Column(length = 100)
 	private String base_location;
+
+	public void setFte_joining_date(LocalDate fte_joining_date) {
+		this.fte_joining_date = fte_joining_date;
+	}
+
+	public void setPls_joining_date(LocalDate pls_joining_date) {
+		this.pls_joining_date = pls_joining_date;
+	}
+
+	public void setWfo_date(LocalDate wfo_date) {
+		this.wfo_date = wfo_date;
+	}
 
 	public Joining_details() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Joining_details(Integer joining_details_code, String joining_fy_as_fte, Date fte_joining_date,
-			Date pls_joining_date, String joining_psl, Date wfo_date, String base_location) {
+	
+
+	public Joining_details(Integer joining_details_code, String joining_fy_as_fte, LocalDate fte_joining_date,
+			LocalDate pls_joining_date, String joining_psl, LocalDate wfo_date, String base_location) {
 		super();
 		this.joining_details_code = joining_details_code;
 		this.joining_fy_as_fte = joining_fy_as_fte;
@@ -65,21 +90,7 @@ public class Joining_details {
 		this.joining_fy_as_fte = joining_fy_as_fte;
 	}
 
-	public Date getFte_joining_date() {
-		return fte_joining_date;
-	}
 
-	public void setFte_joining_date(Date fte_joining_date) {
-		this.fte_joining_date = fte_joining_date;
-	}
-
-	public Date getPls_joining_date() {
-		return pls_joining_date;
-	}
-
-	public void setPls_joining_date(Date pls_joining_date) {
-		this.pls_joining_date = pls_joining_date;
-	}
 
 	public String getJoining_psl() {
 		return joining_psl;
@@ -89,13 +100,7 @@ public class Joining_details {
 		this.joining_psl = joining_psl;
 	}
 
-	public Date getWfo_date() {
-		return wfo_date;
-	}
 
-	public void setWfo_date(Date wfo_date) {
-		this.wfo_date = wfo_date;
-	}
 
 	public String getBase_location() {
 		return base_location;

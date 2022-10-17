@@ -28,4 +28,9 @@ public class Joining_details_Service {
 	public void delete(int joining_details_code) {
 		joining_details_Repo.deleteById(joining_details_code);
 	}
+	
+	public Integer update(Joining_details join) {
+		return joining_details_Repo.idIfJoiningObjExists(join);
+	}
+	
 }

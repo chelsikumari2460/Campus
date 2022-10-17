@@ -50,5 +50,17 @@ public class Joining_details_Controller {
 		joiningService.saveOrUpdate(joining_details);
 		return joining_details;
 	}
+	
+	//Create new data if not exist
+	@PostMapping("/joiningDetail/{joinCode}/edit")
+	private Integer updateDetail(@PathVariable("joinCode") int joinCode,@RequestBody Joining_details joining_detail) {
+		Integer id=joiningService.update(joining_detail);
+		if(id==null) {
+			saveDetail(joining_detail);
+			return joinCode;
+		}	
+		return id;
+	}
+	
 
 }
